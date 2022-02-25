@@ -9,8 +9,14 @@ def play_game():
     with open("test-word.txt") as test_word:
         words_list = test_word.read()
         words = list(map(str, words_list.split()))
-        print("Your word is", len(random.choice(words)), "letters long.")
-
+        global the_word 
+        the_word = random.choice(words)
+        print("Your word is", len(the_word), "letters long.")
+        guesses = []
+        guesses = input("Guess one letter at a time. Make your guess:")
+        # this worked a little bit: print
+        print([letter if letter in guesses else "_" for letter in the_word])
+        guesses = input("Guess one letter at a time. Make your guess:")
 
 
     # guesses=[]
