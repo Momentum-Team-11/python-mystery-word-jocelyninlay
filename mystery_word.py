@@ -5,19 +5,41 @@ from pyparsing import Word
 def play_game():
 #    theirname = input("What is your name?")
 #    print("Good luck",theirname)
-
-    with open("test-word.txt") as test_word:
+  
+  with open("test-word.txt") as test_word:
         words_list = test_word.read()
         words = list(map(str, words_list.split()))
         global the_word 
         the_word = random.choice(words)
+        count = 8
         print("Your word is", len(the_word), "letters long.")
-        guesses = []
-        guesses = input("Guess one letter at a time. Make your guess:")
-        # this worked a little bit: print
+        guesses = input("Guess one letter at a time. Make your guess:")     
+  while guesses != the_word:
+        count = count - 1
+        if count < 1:
+                print("Sorry, game over")
+                exit()
         print([letter if letter in guesses else "_" for letter in the_word])
-        guesses = input("Guess one letter at a time. Make your guess:")
 
+
+
+
+        # def display_letter(letter, guesses):
+        #     if letter in guesses:
+        #         return letter
+        #     else:
+        #         return "_" 
+        # #
+        # for letter in the_word:
+        #     output = []
+        #     output.append(display_letter(letter, guesses))
+        #     print(output)  
+        #     def print_word(the_word, guesses):
+        #         output_letters = [display_letter(letter, guesses) for letter in the_word] 
+        #         print("".join(output_letters))   
+        #     print_word(the_word, output)  
+            
+#now need to take all of the guesses and put them into a new list 
 
     # guesses=[]
     # their_guess = input("Guess the word one letter at a time")
