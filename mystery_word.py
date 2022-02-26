@@ -1,6 +1,5 @@
 import random
 
-from pyparsing import Word
 
 def play_game():
 #    theirname = input("What is your name?")
@@ -12,14 +11,14 @@ def play_game():
         global the_word 
         the_word = random.choice(words)
         count = 8
-        print("Your word is", len(the_word), "letters long.")
-        guesses = input("Guess one letter at a time. Make your guess:")     
-  while guesses != the_word:
-        count = count - 1
-        if count < 1:
+        print("Your word is", len(the_word), "letters long.")   
+  while count > 0:
+      guesses = input("Guess one letter at a time. Make your guess:") 
+      count = count - 1
+      if count < 1:
                 print("Sorry, game over")
                 exit()
-        print([letter if letter in guesses else "_" for letter in the_word])
+      print([letter if letter in guesses else "_" for letter in the_word])
 
 
 
